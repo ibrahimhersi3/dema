@@ -77,5 +77,5 @@ docker run --rm -v "$(pwd)/data:/app/data" dema:latest
 
 * I currently have minimal error handling, I would add more logging and error handling.
 * I would write unit tests for core functions.
-* I currently use a simple database schema (SQLite) I would * design a more scalable, normalized schema.
+* I currently use a simple database schema (SQLite) I would design a more scalable, normalized schema.
 * I have no CI/CD integration, I would integrate a CI/CD pipeline for automated testing and deployment.
