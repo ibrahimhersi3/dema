@@ -30,6 +30,16 @@ def run_reports(db_url: str = "sqlite:///data/processed/processed.db"):
             print(row)
         
         print("\n" + "="*40 + "\n")
+
+        # Report 3: Total orders and average order amount per category
+        query3 = text("""
+            SELECT category, COUNT(*) AS total_orders, AVG(amount) AS average_order_amount
+            FROM merged_data
+            GROUP BY category;
+        """)
+        print("Orders and Average Order Amount per Category:")
+        for row in connection.execute(query3):
+            print(row)
         
        
 
