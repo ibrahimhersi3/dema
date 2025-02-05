@@ -58,9 +58,9 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-4. Install Dependencies:
+4. Run the Pipeline:
 ```bash
-Run the Pipeline:
+python pipeline.py
 ```
 ### Docker Setup
 
