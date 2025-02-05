@@ -1,6 +1,7 @@
 import pandas as pd
 from pathlib import Path
-from ingestion import read_csv_file
+from src.ingestion import read_csv_file
+
 
 def extract_primary_product_id(product_id: str) -> str:
     # This function takes "prod1520#prod100011001100" and returns "prod1520"

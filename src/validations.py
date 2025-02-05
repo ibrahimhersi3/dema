@@ -1,7 +1,7 @@
 # src/validations.py
-
 from pydantic import BaseModel, ValidationError
-from typing import Optional
+from typing import Optional, Union
+import math
 
 class Order(BaseModel):
     orderId: str
@@ -12,7 +12,7 @@ class Order(BaseModel):
     amount: float
     channel: str
     channelGroup: str
-    campaign: Optional[str] = None
+    campaign: Optional[Union[str, float]] = None
     dateTime: str
 
 class Inventory(BaseModel):
@@ -22,23 +22,18 @@ class Inventory(BaseModel):
     category: str
     subCategory: str
 
-if __name__ == "__main__":
-    # Example order validation
-    sample_order = {
-        "orderId": "O1",
-        "productId": "prod1520#XYZ",
-        "currency": "SEK",
-        "quantity": 1,
-        "shippingCost": 0.0,
-        "amount": 100,
-        "channel": "direct",
-        "channelGroup": "sem",
-        "campaign": None,
-        "dateTime": "2023-02-01T17:12:52Z"
-    }
-
+def validate_order_record(record: dict) -> dict:
     try:
-        order = Order(**sample_order)
-        print("Validated order:", order)
+        order = Order(**record)
+        return order.dict()
     except ValidationError as e:
-        print("Validation error:", e)
+        print(f"Order validation error: {e}")
+        return None
+
+def validate_inventory_record(record: dict) -> dict:
+    try:
+        inventory = Inventory(**record)
+        return inventory.dict()
+    except ValidationError as e:
+        print(f"Inventory validation error: {e}")
+        return None

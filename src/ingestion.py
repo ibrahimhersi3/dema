@@ -11,10 +11,7 @@ def read_csv_file(file_path: Path) -> pd.DataFrame:
 def ingest_data(orders_file: Path, inventory_file: Path) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
     Reads the orders and inventory CSV files.
-
-    :param orders_file: Path to the orders CSV.
-    :param inventory_file: Path to the inventory CSV.
-    :return: Tuple containing the orders DataFrame and the inventory DataFrame.
+    Tuple containing the orders DataFrame and the inventory DataFrame.
     """
     orders_df = read_csv_file(orders_file)
     inventory_df = read_csv_file(inventory_file)
